@@ -17,7 +17,7 @@ class DylibInstaller < Formula
   end
 
   def install
-    bin.install "dylib_installer"
+    bin.install "dylib-installer"
   end
 
 end
