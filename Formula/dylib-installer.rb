@@ -4,7 +4,6 @@
 class DylibInstaller < Formula
   desc "Tool to install dylib files and header to system library path written in Rust."
   homepage "https://github.com/hackerchai/dylib-installer"
-  url "https://github.com/hackerchai/dylib-installer"
   license "GPL-3.0"
   version "0.1.1"
 
@@ -17,7 +16,14 @@ class DylibInstaller < Formula
   end
 
   def install
-    bin.install "dylib-installer"
+    if Hardware::CPU.intel?
+      bin.install "dylib_installer-macos-amd64" => "dylib-installer"
+    elsif Hardware::CPU.arm?
+      bin.install "dylib_installer-macos-arm64" => "dylib-installer"
+    end
   end
 
+  test do
+    system "#{bin}/dylib-installer", "--help"
+  end
 end
