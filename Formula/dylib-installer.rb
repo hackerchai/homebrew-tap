@@ -17,13 +17,13 @@ class DylibInstaller < Formula
 
   def install
     if Hardware::CPU.intel?
-      bin.install "dylib_installer-macos-amd64" => "dylib-installer"
+      bin.install "dylib_installer-macos-amd64" => "dylib_installer"
     elsif Hardware::CPU.arm?
-      bin.install "dylib_installer-macos-arm64" => "dylib-installer"
+      bin.install "dylib_installer-macos-arm64" => "dylib_installer"
     end
   end
 
   test do
-    system "#{bin}/dylib-installer", "--help"
+    system "#{bin}/dylib_installer", "--help"
   end
 end
